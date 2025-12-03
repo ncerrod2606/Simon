@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.contenedor {
+  display: grid;
+  grid-template-columns: repeat(2, 150px);
+  grid-template-rows: repeat(2, 150px);
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  margin: 10% auto;
+}
+
+.casilla {
+  width: 150px;
+  height: 150px;
+}
+
+
+#pulsador1 {
+  background-color: lightcoral;
+  border-top-left-radius: 100%;
+}
+#pulsador2 {
+  background-color: lightblue;
+  border-top-right-radius: 100%;
+}
+#pulsador3 {
+  background-color: lightgreen;
+  border-bottom-left-radius: 100%;
+}
+#pulsador4 {
+  background-color: lightyellow;
+  border-bottom-right-radius: 100%;
+}
