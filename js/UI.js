@@ -15,7 +15,6 @@ export const UI = {
       (item) => {
         item.id = document.getElementById(item.id);
         item.id.addEventListener("click", () => {
-
           UI.change(item, UI.status.ON);
           UI.change(item, UI.status.OFF);
           UI.accion(item);
@@ -44,32 +43,6 @@ export const UI = {
     }
     UI.busy = false;
     console.log(UI.busy);
-    // UI.sacarJugada();
-  },
-  sacarJugada: () => {
-    let UserList = [];
-    UI.listButtons.forEach((item) => {
-      item.id.addEventListener("click", () => {
-        UserList.push(UI.listButtons.indexOf(item));
-        UI.compare(UserList);
-        console.log(UserList);
-      });
-    });
-  },
-
-  compare: (UserList) => {
-    
-    if (UserList.length == UI.list.length) {
-      if (UserList == UI.list) {
-        console.log("Has ganado");
-      } else {
-        console.log("Has perdido");
-        console.log(UserList);
-        console.log(UI.list);
-      }
-    } else {
-      console.log("No tiene la misma longitud");
-    }
   },
 
 
