@@ -1,6 +1,7 @@
 export class GameSimon {
   secuencia = [];
   userSecuencia = [];
+  secuencia2 = []; 
 
   constructor(UI) {
     this.UI = UI;
@@ -8,8 +9,10 @@ export class GameSimon {
   }
 
   introducirSecuencia() {
+    this.userSecuencia=[];
     const numero = Math.floor(Math.random() * 4);
     this.secuencia.push(numero);
+    this.secuencia2.push(numero);
     this.UI.setList(this.secuencia);
     this.UI.play();
   }
@@ -30,11 +33,18 @@ export class GameSimon {
   }
 
   compararSecuencias() {
+
+    let secuenciaCopia = [...this.secuencia];
+    let userCopia = [...this.userSecuencia];
+
+    let correcto = true;
+    
     if (this.secuencia.length == this.userSecuencia.length) {
-      if (this.secuencia.shift() === this.userSecuencia.shift()) {
+      if (this.secuenciaCopia === this.userCopia) {
         console.log("Has ganado");
         this.UI.busy = true;
-        this.introducirSecuencia();
+
+        setTimeout(() => this.introducirSecuencia(), 500);
       } else {
         console.log("Has perdido");
       }
