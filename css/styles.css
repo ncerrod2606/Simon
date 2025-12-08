@@ -134,3 +134,9 @@ h2.text-xl {
   color: var(--color-text);
   min-height: 1.5rem; 
 }
+
+.docs-demo-html svg {
+    color: #333; 
+    width: 200px;
+    height: 100px;
+}
