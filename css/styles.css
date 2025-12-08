@@ -1,38 +1,136 @@
+/* ------------------------------------------- */
+/* 1. Reset Básico y Tipografía */
+/* ------------------------------------------- */
+
+:root {
+  --color-bg-dark: #1e1e1e;
+  --color-bg-light: #2c2c2c;
+  --color-text: #e0e0e0;
+  --color-accent: #00bcd4; 
+  --color-shadow: rgba(0, 0, 0, 0.4);
+  --border-radius-lg: 15px;
+}
+
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--color-bg-dark);
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: 30px;
+  padding: 20px;
+}
+
+/* ------------------------------------------- */
+/* 2. Estilos del Título y Contenedor Principal */
+/* ------------------------------------------- */
+
+.large {
+  background-color: var(--color-bg-light);
+  border-radius: var(--border-radius-lg);
+  padding: 15px 30px;
+  box-shadow: 0 4px 6px var(--color-shadow), 0 1px 3px var(--color-shadow);
+}
+
+h2.text-xl {
+  font-size: 2.2rem;
+  color: var(--color-accent);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(0, 188, 212, 0.5);
 }
 
 .contenedor {
   display: grid;
-  grid-template-columns: repeat(2, 150px);
-  grid-template-rows: repeat(2, 150px);
-  justify-content: center;
-  align-items: center;
-  width: fit-content;
-  margin: 10% auto;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  width: 350px; /* Tamaño fijo del tablero */
+  height: 350px;
+  background-color: var(--color-bg-light);
+  border-radius: 50%;
+  padding: 20px;
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8), 0 10px 20px rgba(0, 0, 0, 0.5); 
+  position: relative;
 }
+
+/* ------------------------------------------- */
+/* 3. Estilos de las Casillas (Botones) */
+/* ------------------------------------------- */
 
 .casilla {
-  width: 150px;
-  height: 150px;
+  width: 100%;
+  height: 100%;
+  border: 5px solid var(--color-bg-dark);
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  will-change: background-color, transform;
 }
-
 
 #pulsador1 {
   background-color: lightcoral;
   border-top-left-radius: 100%;
 }
+
 #pulsador2 {
-  background-color: lightblue;
+   background-color: lightblue;
   border-top-right-radius: 100%;
 }
+
 #pulsador3 {
   background-color: lightgreen;
   border-bottom-left-radius: 100%;
 }
+
 #pulsador4 {
   background-color: lightyellow;
   border-bottom-right-radius: 100%;
+}
+
+.casilla:active {
+  transform: scale(0.98);
+  box-shadow: inset 0 0 15px var(--color-shadow);
+}
+
+/* ------------------------------------------- */
+/* 4. Estilos del Botón y Resultado */
+/* ------------------------------------------- */
+
+#btn, #btn-restart {
+  background-color: var(--color-accent);
+  color: var(--color-bg-dark);
+  border: none;
+  padding: 12px 25px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.2s, transform 0.1s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#btn:hover, #btn-restart:hover {
+  background-color: #00e5ff;
+}
+
+#btn:active, #btn-restart:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#result {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--color-text);
+  min-height: 1.5rem; 
 }

@@ -1,18 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./css/styles.css">
-</head>
-<body>
-    <div class="contenedor">
-        <div id="pulsador1" class="casilla"></div>
-        <div id="pulsador2" class="casilla"></div>
-        <div id="pulsador3" class="casilla"></div>
-        <div id="pulsador4" class="casilla"></div>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+  
+    <div class="large grid centered square-grid">
+      <h2 class="text-xl">GAME SIMON</h2>
     </div>
+    <div class="contenedor">
+      <div id="pulsador1" class="casilla"></div>
+      <div id="pulsador2" class="casilla"></div>
+      <div id="pulsador3" class="casilla"></div>
+      <div id="pulsador4" class="casilla"></div>
+    </div>
+
+    <p id="result"></p>
+
+    <button id="btn">Play</button>
+
+    <button id="btn-restart">Restart</button>
+
+    <script src="./libs/anime.min.js" type="module"></script>
+
     <script src="./js/index.js" type="module"></script>
-</body> 
+  </body>
 </html>

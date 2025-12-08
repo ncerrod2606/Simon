@@ -7,21 +7,36 @@ export const UI = {
   listButtons: [],
   list: [],
   busy: false,
-  accion:null,
+  accion: null,
+  result: null,
+  btn: null,
+  btnrestart: null,
 
-  init(configButtons) {
+  init(configButtons, domControl, domBtn, domBtnRestart) {
     UI.listButtons = configButtons;
-    UI.listButtons.forEach(
-      (item) => {
-        item.id = document.getElementById(item.id);
-        item.id.addEventListener("click", () => {
-          UI.change(item, UI.status.ON);
-          UI.change(item, UI.status.OFF);
+    UI.result = document.getElementById(domControl.result); // Aqui asigno el elemento del DOM al ojeto que le pase en UI
+    UI.btn = document.getElementById(domBtn.btn); // Aqui hago lo mismo pero para el boton
+    UI.btnrestart = document.getElementById(domBtnRestart.btnrestart); // Aqui hago lo mismo pero para el boton de reinicio
+    UI.listButtons.forEach((item) => {
+      item.id = document.getElementById(item.id);
+      item.id.addEventListener("click", () => { // Aqui le cambio el color al pulsar cada tecla y lo cambio con change 2 para que no se espere y lo vea el usuario como un click
+        UI.change2(item, UI.status.ON);
+        setTimeout(() => { //Se lo aplico solo para que el click sea inmediato pero al apagarse tarde como un click normal
+          UI.change2(item, UI.status.OFF);
           UI.accion(item);
-        });
-      }
-    );
+        }, 500);
+      });
+    });
   },
+
+  setResult: (result) => {
+    UI.result.innerHTML = result;
+  },
+
+  changeStatus(newStatus) {
+    UI.result.textContent = newStatus;
+  },
+
   setAccion: (accion) => {
     UI.accion = accion;
   },
@@ -45,7 +60,6 @@ export const UI = {
     console.log(UI.busy);
   },
 
-
   change: (element, status) => {
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -54,5 +68,11 @@ export const UI = {
         resolve(true);
       }, 1000);
     });
+  },
+
+  //Cambio de color sin espera para los clicks
+  change2: (element, status) => {
+    element.id.style.backgroundColor =
+      status === UI.status.ON ? element.colorOn : element.colorOff;
   },
 };
