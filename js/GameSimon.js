@@ -55,7 +55,7 @@ export class GameSimon {
       const itemUsuario = secuenciaUsuario.shift();
 
       if (itemJuego !== itemUsuario) {
-        this.UI.changeStatus("Has perdido"); // Si hay algun numero que no coincide muestra que ha perdido y sale de la funcion por lo que no sigue a la siguiente ronda
+        this.UI.changeStatus("Game Over"); // Si hay algun numero que no coincide muestra que ha perdido y sale de la funcion por lo que no sigue a la siguiente ronda
         return;
       }
     }
@@ -65,10 +65,10 @@ export class GameSimon {
 
     if (rondaCompleta) {
       // Si las longitudes son iguales el usuario ha completado la ronda y introduce la siguiente secuencia
-      this.UI.changeStatus("Ronda completada");
+      this.UI.changeStatus("Round Complete");
       setTimeout(() => this.introducirSecuencia(), 500);
     } else {
-      this.UI.changeStatus("Vas bien"); // Si las longitudes aun no son iguales pero no hay ningun error le indica al usuario que va bien
+      this.UI.changeStatus("Good So Far"); // Si las longitudes aun no son iguales pero no hay ningun error le indica al usuario que va bien
     }
   }
 }
