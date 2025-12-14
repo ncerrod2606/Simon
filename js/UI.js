@@ -60,6 +60,15 @@ export const UI = {
     console.log(UI.busy);
   },
 
+  start(introducirSecuencia) {
+    btn.addEventListener("click", () => introducirSecuencia()); // Para iniciar el juego con la primera secuencia
+  },
+
+  restart(restartSecuencia) {
+    this.btnrestart.addEventListener("click", () => restartSecuencia()); // Para iniciar el juego con la primera secuencia
+  },
+
+
   change: (element, status) => {
     return new Promise((resolve) => {
       setTimeout(() => {

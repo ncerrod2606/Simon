@@ -26,11 +26,11 @@ export class GameSimon {
   }
 
   start() {
-    this.UI.btn.addEventListener("click", () => this.introducirSecuencia()); // Para iniciar el juego con la primera secuencia
+    this.UI.start(this.introducirSecuencia.bind(this)); // Llamo a la funcion de start hecha en UI
   }
 
   restart() {
-    this.UI.btnrestart.addEventListener("click", () => this.restartSecuencia()); // Para iniciar el juego con la primera secuencia
+    this.UI.restart(this.restartSecuencia.bind(this)); // Llamo a la funcion de restart hecha en UI
   }
 
   pulsar(boton) {
@@ -46,18 +46,19 @@ export class GameSimon {
 
   compararSecuencias() {
     // Creo copias de los arrays para que los originales no se modifiquen
-    const secuenciaJuego = [...this.secuencia];
     const secuenciaUsuario = [...this.userSecuencia];
+    let i = 0;
 
     // Aqui comparo las secuencias elemento a elemento sacando el primer elemento de cada una
     while (secuenciaUsuario.length > 0) {
-      const itemJuego = secuenciaJuego.shift();
+      const itemJuego = this.secuencia[i];
       const itemUsuario = secuenciaUsuario.shift();
 
       if (itemJuego !== itemUsuario) {
         this.UI.changeStatus("Game Over"); // Si hay algun numero que no coincide muestra que ha perdido y sale de la funcion por lo que no sigue a la siguiente ronda
         return;
       }
+      i++;
     }
 
     // Si no hay ningun fallo al final compara las longitudes y lo guardo en una variable
